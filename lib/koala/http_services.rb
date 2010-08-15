@@ -19,6 +19,9 @@ module Koala
           # We translate args to a valid query string. If post is specified,
           # we send a POST request to the given path with the given arguments.
 
+          # make sure the path has a leading / for compatibility with some testing librariess
+          path = "/#{path}" unless path =~ /^\//
+        
           # if the verb isn't get or post, send it as a post argument
           args.merge!({:method => verb}) && verb = "post" if verb != "get" && verb != "post"
 

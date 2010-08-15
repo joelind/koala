@@ -3,6 +3,7 @@ LICENSE
 Manifest
 Rakefile
 init.rb
+joelind-koala.gemspec
 koala.gemspec
 lib/koala.rb
 lib/koala/graph_api.rb

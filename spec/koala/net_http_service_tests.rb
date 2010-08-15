@@ -76,7 +76,7 @@ class NetHTTPServiceTests < Test::Unit::TestCase
       
       it "should go to the specified path" do
         path = mock('Path')
-        @http_yield_mock.should_receive(:post).with(path, anything).and_return(@http_request_result)
+        @http_yield_mock.should_receive(:post).with("/#{path}", anything).and_return(@http_request_result)
         
         Bear.make_request(path, {}, 'post')        
       end
@@ -105,7 +105,7 @@ class NetHTTPServiceTests < Test::Unit::TestCase
         args = {}
         
         Bear.should_receive(:encode_params).with(args).and_return(params)
-        @http_yield_mock.should_receive(:get).with("#{path}?#{params}").and_return(@http_request_result)
+        @http_yield_mock.should_receive(:get).with("/#{path}?#{params}").and_return(@http_request_result)
         
         Bear.make_request(path, args, 'get')
       end
